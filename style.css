@@ -3,27 +3,124 @@
 esse elemento para definir para variaveis globais(propriedades customizadas) que podem ser
 reutilizadas em todo o site*/
 
-:root{
-    --fonte-primaria: "poppins", sans-serif;
+:root {
+   --fonte-primaria: "Poppins", sans-serif;
 
-   /*  Cores  */
+   /* Cores */
    --cor-texto-primaria: #1f1f1f;
    --cor-texto-secundaria: #ffffff;
 
-   /*  Cores de fundo  */
+   /* Cores de fundo */
    --bg-primaria: #ffffff;
    --bg-secundaria: #f1f1f1;
+
+   --cor-da-borda: #bbbbbb;
+   --cor-overlay: rgba(0, 0, 0, 0.08);
+   --cor-gradiente-primaria: #34495e;
+   --cor-gradiente-secundaria: #3498d8;
 }
 
 /* limpar os estilos padrões do navegador */
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    list-style:none;
+    list-style: none;
 }
 
-body{
+body {
     font-family: var(--fonte-primaria);
     background-color: var(--bg-primaria);
+    color: var(--cor-texto-primaria);
+}
+
+/* estilos utilitarios */
+
+.visually-hidden {
+    /* esconde o elemento visualmente, mas mantém acessível para leitores de tela */
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    white-space: nowrap;
+    position: absolute;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+/* estilos gerais */
+.lancamento {
+    height: 80vh;
+    background-image: url("img/prédio-5.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.contador {
+    background-color: var(--cor-overlay);
+    height: 100%;
+    color: var(--cor-texto-secundaria);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.contador div {
+    text-align: center;
+}
+
+.contador div p {
+    text-align: center;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.contador div p:first-child {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.novidades {
+    min-height: 80dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: var(--bg-secundaria);
+}
+
+.novidades h2 {
+    font-size: 2.375rem;
+    background: linear-gradient(to left, var(--cor-gradiente-primaria), var(--cor-gradiente-secundaria));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.novidades h2 + p {
+    font-weight: 600;
+    font-style: italic;
+}
+
+.novidades p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+html {
+    font-size: 16px;
+}
+
+/* rem = root element 
+2 rem = 32px , 1 rem = 16px 
+0.5 rem = 8px , 0.25 rem = 4px */
+
+img {
+    max-width: 100%;
+    display: block;
 }
