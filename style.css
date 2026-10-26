@@ -1,26 +1,18 @@
-
-/* o root é um seletor que representa o elemento raiz do documento HTML. usamos
-esse elemento para definir para variaveis globais(propriedades customizadas) que podem ser
-reutilizadas em todo o site*/
-
+/* o root, é um seletor do css que representa o elemento raiz(root) do documento. O elemento raiz é o HTML. Usamos esse elemento para definir variaveis globais (propriedades customizadas) que podem ser reutilizadas em todo o site. */
 :root {
-   --fonte-primaria: "Poppins", sans-serif;
+    --fonte-primaria: "Poppins", sans-serif;
+    /* Cores */
+    --cor-texto-primaria: #1f1f1f;
+    --cor-texto-secundaria: #ffffff;
 
-   /* Cores */
-   --cor-texto-primaria: #1f1f1f;
-   --cor-texto-secundaria: #ffffff;
+    --cor-borda: #bbbbbb;
+    --cor-overlay: #0000008d;
+    --cor-gradient: linear-gradient(to right, #34495E, #3498DB);
 
-   /* Cores de fundo */
-   --bg-primaria: #ffffff;
-   --bg-secundaria: #f1f1f1;
-
-   --cor-da-borda: #bbbbbb;
-   --cor-overlay: rgba(0, 0, 0, 0.08);
-   --cor-gradiente-primaria: #34495e;
-   --cor-gradiente-secundaria: #3498d8;
+    --bg-primairo: #ffffff;
+    --bg-secundario: #f1f1f1;
 }
 
-/* limpar os estilos padrões do navegador */
 * {
     margin: 0;
     padding: 0;
@@ -30,30 +22,30 @@ reutilizadas em todo o site*/
 
 body {
     font-family: var(--fonte-primaria);
-    background-color: var(--bg-primaria);
-    color: var(--cor-texto-primaria);
+    background-color: var(--bg-primairo);
 }
 
-/* estilos utilitarios */
-
-.visually-hidden {
-    /* esconde o elemento visualmente, mas mantém acessível para leitores de tela */
+.visuallyhidden {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
     border: 0;
+    margin: -1px;
     white-space: nowrap;
     position: absolute;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
     clip-path: inset(50%);
 }
 
-/* estilos gerais */
+.lancamento,
+.novidades {
+    height: 95dvh;
+    width: 100%;
+}
+
 .lancamento {
-    height: 80vh;
-    background-image: url("img/prédio-5.png");
+    /* height: 80dvh; */
+    background-image: url("img/predio3.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -63,18 +55,15 @@ body {
     background-color: var(--cor-overlay);
     height: 100%;
     color: var(--cor-texto-secundaria);
+
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.contador div {
-    text-align: center;
-}
-
 .contador div p {
     text-align: center;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+    text-shadow: 2px 2px 10px #000000;
 }
 
 .contador div p:first-child {
@@ -83,45 +72,135 @@ body {
 }
 
 .novidades {
-    min-height: 80dvh;
+    /* height: 80dvh; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
+
     text-align: center;
-    padding: 2rem 1rem;
-    background-color: var(--bg-secundaria);
+    padding: .5rem;
+
+    background-color: var(--bg-primairo);
 }
 
 .novidades h2 {
-    font-size: 2.375rem;
-    background: linear-gradient(to left, var(--cor-gradiente-primaria), var(--cor-gradiente-secundaria));
-    -webkit-background-clip: text;
+    font-size: 3rem;
+    background: var(--cor-gradient);
     background-clip: text;
     color: transparent;
 }
 
-.novidades h2 + p {
+.novidades h2+p {
     font-weight: 600;
     font-style: italic;
-}
-
-.novidades p {
     font-size: 1rem;
-    line-height: 1.5;
 }
 
-
-html {
-    font-size: 16px;
+.novidades p+p {
+    max-width: 75ch;
 }
 
-/* rem = root element 
-2 rem = 32px , 1 rem = 16px 
-0.5 rem = 8px , 0.25 rem = 4px */
+.novidades form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
+    width: 100%;
+    max-width: 25.5rem;
+}
+
+input,
+button {
+    height: 3rem;
+    border-radius: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+input {
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--cor-borda);
+}
+
+button {
+    background: var(--cor-gradient);
+    color: var(--cor-texto-secundaria);
+    border: 0;
+    font-weight: 500;
+}
+
+.andamento {
+    padding: 4.75rem 0.875rem;
+    /* padding: top right bottom left */
+    text-align: center;
+}
+
+.andamento h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: .25rem;
+}
+
+.andamento p {
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.andamento ul {
+    display: grid;
+    gap: .875rem;
+}
+
+/* remover provisorio */
 img {
-    max-width: 100%;
-    display: block;
+    width: 100%;
+    transition: transform 300ms cubic-bezier(1, 0, 0, 1);
+    /* transition: propriedade tempo animação; */
+}
+
+img:hover{
+    transform: scale(0.95);
+}
+
+@media(min-width: 500px) {
+    ul {
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
+
+@media(min-width: 744px) {
+    .novidades h2 {
+        font-size: 3.375rem;
+    }
+
+    .novidades h2+p {
+        font-size: 1.25rem;
+    }
+
+    ul {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media(min-width: 1080px) {
+    .container {
+        display: flex;
+    }
+
+    .andamento{
+        padding-top: 8rem;
+    }
+
+    .andamento h2{
+        font-size: 3rem;
+    }
+
+    .andamento p{
+        font-size: 1.25rem;
+    }
 }
